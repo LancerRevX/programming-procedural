@@ -9,6 +9,8 @@
 #include "diagonal_matrix.h"
 #include "square_matrix.h"
 
+#include "print_method.h"
+
 typedef enum Type Type;
 enum Type {
     DIAGONAL = 2,
@@ -26,7 +28,7 @@ struct Matrix {
 
 Matrix create_matrix(FILE* file);
 
-void matrix_write(Matrix* matrix, FILE* file);
+void matrix_write(Matrix* matrix, FILE* file, PrintMethod print_method);
 void matrix_clear(Matrix* matrix);
 
 #endif

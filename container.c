@@ -34,14 +34,14 @@ void container_read(Container* container, FILE* file) {
     }
 }
 
-void container_write(Container* container, FILE* file) {
+void container_write(Container* container, FILE* file, PrintMethod print_method) {
     Node* node = container->first;
     if (!node) {
         fprintf(file, "The container is empty!\n");
     } else {
         fprintf(file, "The container contains:\n");
         while (node) {
-            matrix_write(&node->matrix, file);
+            matrix_write(&node->matrix, file, print_method);
             node = node->next;
         }
     }

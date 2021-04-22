@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#include "print_method.h"
+
 typedef struct SquareMatrix SquareMatrix;
 struct SquareMatrix {
     size_t size;
@@ -13,7 +15,7 @@ struct SquareMatrix {
 
 SquareMatrix create_square_matrix(FILE* file);
 
-void square_matrix_write(SquareMatrix* matrix, FILE* file);
+void square_matrix_write(SquareMatrix* matrix, FILE* file, PrintMethod print_method);
 void square_matrix_clear(SquareMatrix* matrix);
 
 #endif

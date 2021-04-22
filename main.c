@@ -42,11 +42,11 @@ int main(int argc, char** argv) {
 
     container_read(&container, input_file);
     fprintf(output_file, "Filled container\n");
-    container_write(&container, output_file);
+    container_write(&container, output_file, BY_ROWS);
     fprintf(output_file, "Written container\n");
     container_clear(&container);
     fprintf(output_file, "Cleared container\n");
-    container_write(&container, output_file);
+    container_write(&container, output_file, BY_ROWS);
 
     fprintf(output_file, "Stop\n");
     fflush(output_file);

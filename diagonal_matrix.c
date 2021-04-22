@@ -16,14 +16,32 @@ DiagonalMatrix create_diagonal_matrix(FILE* file) {
     return matrix;
 }
 
-void diagonal_matrix_write(DiagonalMatrix* matrix, FILE* file) {
+void diagonal_matrix_write(DiagonalMatrix* matrix, FILE* file, PrintMethod print_method) {
     fprintf(file, "Diagonal matrix:\n");
-    for (int32_t i = 0; i < matrix->size; i++) {
-        for (int32_t j = 0; j < matrix->size; j++) {
-            fprintf(file, "%d ", matrix->matrix[i][j]);
-        }
-        fprintf(file, "\n");
-    }
+        switch (print_method) {
+        case BY_ROWS:
+            for (int32_t i = 0; i < matrix->size; i++) {
+                for (int32_t j = 0; j < matrix->size; j++) {
+                    fprintf(file, "%d ", matrix->matrix[i][j]);
+                }
+                fprintf(file, "\n");
+            }
+            break;
+        case BY_COLUMNS:
+            for (int32_t j = 0; j < matrix->size; j++) {
+                for (int32_t i = 0; i < matrix->size; i++) {
+                    fprintf(file, "%d ", matrix->matrix[i][j]);
+                }
+                fprintf(file, "\n");
+            }
+            break;
+        case ONE_DIMENSIONAL_ARRAY:
+            for (int32_t i = 0; i < matrix->size; i++) {
+                for (int32_t j = 0; j < matrix->size; j++) {
+                    fprintf(file, "%d ", matrix->matrix[i][j]);
+                }
+            }
+    }   
 }
 
 void diagonal_matrix_clear(DiagonalMatrix* matrix) {

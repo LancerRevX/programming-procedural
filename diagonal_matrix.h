@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#include "print_method.h"
+
 typedef struct DiagonalMatrix DiagonalMatrix;
 struct DiagonalMatrix {
     size_t size;
@@ -13,7 +15,7 @@ struct DiagonalMatrix {
 
 DiagonalMatrix create_diagonal_matrix(FILE* file);
 
-void diagonal_matrix_write(DiagonalMatrix* matrix, FILE* file);
+void diagonal_matrix_write(DiagonalMatrix* matrix, FILE* file, PrintMethod print_method);
 void diagonal_matrix_clear(DiagonalMatrix* matrix);
 
 #endif
