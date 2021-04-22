@@ -52,14 +52,16 @@ void container_sort(Container* container) {
     }
 }
 
-void container_write(Container* container, FILE* file, PrintMethod print_method) {
+void container_write(Container* container, FILE* file, PrintMethod print_method, bool filter) {
     Node* node = container->first;
     if (!node) {
         fprintf(file, "The container is empty!\n");
     } else {
         fprintf(file, "The container contains:\n");
         while (node) {
-            matrix_write(&node->matrix, file, print_method);
+            if (!filter || node->matrix.type == SQUARE) {
+                matrix_write(&node->matrix, file, print_method);
+            }
             node = node->next;
         }
     }
