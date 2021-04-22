@@ -6,23 +6,30 @@ void container_init(Container* container) {
 }
 
 void container_read(Container* container, FILE* file) {
-    Node* node;
+    Node* node = NULL;
     if (container->first != NULL) {
         node = container->first;
         while (node->next) {
             node = node->next;
         }
-    } else {
-        node = malloc(sizeof(Node));
-        container->first = node;
     }
-    node->matrix = create_matrix(file);
-    node->next = NULL;
-    while (!feof(file)) {
-        node->next = malloc(sizeof(Node));
-        node = node->next;
-        node->matrix = create_matrix(file);
-        node->next = NULL;
+    
+    while (true) {
+        Matrix matrix = create_matrix(file);    
+        if (feof(file)) {
+            break;
+        }
+        Node* new_node = malloc(sizeof(Node));
+        new_node->matrix = matrix;
+        new_node->next = NULL;
+        if (node) {
+            node->next = new_node;
+            node = node->next;
+        } else {
+            container->first = new_node;
+            node = new_node;
+        }
+        container->size += 1;
     }
 }
 
