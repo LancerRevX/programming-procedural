@@ -25,6 +25,16 @@ void square_matrix_write(SquareMatrix* matrix, FILE* file) {
     }
 }
 
+int32_t square_matrix_get_sum(SquareMatrix* matrix) {
+    int32_t result = 0;
+    for (int32_t i = 0; i < matrix->size; i++) {
+        for (int32_t j = 0; j < matrix->size; j++) {
+            result += matrix->matrix[i][j];
+        }
+    }
+    return result;
+}
+
 void square_matrix_clear(SquareMatrix* matrix) {
     if (matrix->size) {
         for (int32_t i = 0; i < matrix->size; i++) {

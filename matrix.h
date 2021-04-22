@@ -29,6 +29,7 @@ struct Matrix {
 Matrix create_matrix(FILE* file);
 
 void matrix_write(Matrix* matrix, FILE* file);
+int32_t matrix_get_sum(Matrix* matrix);
 void matrix_clear(Matrix* matrix);
 
 #endif

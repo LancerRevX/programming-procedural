@@ -14,6 +14,7 @@ struct SquareMatrix {
 SquareMatrix create_square_matrix(FILE* file);
 
 void square_matrix_write(SquareMatrix* matrix, FILE* file);
+int32_t square_matrix_get_sum(SquareMatrix* matrix);
 void square_matrix_clear(SquareMatrix* matrix);
 
 #endif

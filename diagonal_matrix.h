@@ -14,6 +14,7 @@ struct DiagonalMatrix {
 DiagonalMatrix create_diagonal_matrix(FILE* file);
 
 void diagonal_matrix_write(DiagonalMatrix* matrix, FILE* file);
+int32_t diagonal_matrix_get_sum(DiagonalMatrix* matrix);
 void diagonal_matrix_clear(DiagonalMatrix* matrix);
 
 #endif
