@@ -2,6 +2,7 @@
 #define CONTAINER_C
 
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "matrix.h"
 

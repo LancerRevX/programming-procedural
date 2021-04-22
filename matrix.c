@@ -6,14 +6,15 @@ Matrix create_matrix(FILE* file) {
     int32_t type;
     fread(&type, sizeof(type), 1, file);
     Matrix matrix = {.type = type};
-    switch (type)
-    {
+    switch (type) {
         case DIAGONAL:
             matrix.diagonal_matrix = create_diagonal_matrix(file);
             break;
-        
         case SQUARE:
             matrix.square_matrix = create_square_matrix(file);
+            break;
+        case LOWER_TRIANGULAR:
+            matrix.lower_triangular_matrix = create_lower_triangular_matrix(file);
             break;
     }
     return matrix;
@@ -27,6 +28,9 @@ void matrix_write(Matrix* matrix, FILE* file) {
         case SQUARE:
             square_matrix_write(&matrix->square_matrix, file);
             break;
+        case LOWER_TRIANGULAR:
+            lower_triangular_matrix_write(&matrix->lower_triangular_matrix, file);
+            break;
     }
 }
 
@@ -37,6 +41,9 @@ void matrix_clear(Matrix* matrix) {
             break;
         case SQUARE:
             square_matrix_clear(&matrix->square_matrix);
+            break;
+        case LOWER_TRIANGULAR:
+            lower_triangular_matrix_clear(&matrix->lower_triangular_matrix);
             break;
     }
 }

@@ -4,15 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <stdbool.h>
 
 #include "diagonal_matrix.h"
 #include "square_matrix.h"
+#include "lower_triangular_matrix.h"
 
 typedef enum Type Type;
 enum Type {
     DIAGONAL = 2,
-    SQUARE = 1
+    SQUARE = 1,
+    LOWER_TRIANGULAR = 3
 };
 
 typedef struct Matrix Matrix;
@@ -21,6 +22,7 @@ struct Matrix {
     union {
         DiagonalMatrix diagonal_matrix;
         SquareMatrix square_matrix;
+        LowerTriangularMatrix lower_triangular_matrix;
     };
 };
 
