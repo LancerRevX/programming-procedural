@@ -2,6 +2,7 @@
 #define CONTAINER_C
 
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "matrix.h"
 
@@ -19,7 +20,7 @@ struct Container {
 
 void container_init(Container*);
 void container_read(Container*, FILE*);
-void container_write(Container*, FILE*);
+void container_write(Container*, FILE*, bool);
 void container_clear(Container*);
 
 #endif
