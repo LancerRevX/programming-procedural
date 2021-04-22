@@ -29,7 +29,7 @@ void matrix_write(Matrix* matrix, FILE* file, PrintMethod print_method) {
             square_matrix_write(&matrix->square_matrix, file, print_method);
             break;
         case LOWER_TRIANGULAR:
-            lower_triangular_matrix_write(&matrix->lower_triangular_matrix, file);
+            lower_triangular_matrix_write(&matrix->lower_triangular_matrix, file, print_method);
             break;
     }
 }
