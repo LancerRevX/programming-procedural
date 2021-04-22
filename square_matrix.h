@@ -11,6 +11,7 @@ typedef struct SquareMatrix SquareMatrix;
 struct SquareMatrix {
     size_t size;
     int32_t** matrix;
+    PrintMethod print_method;
 };
 
 SquareMatrix create_square_matrix(FILE* file);

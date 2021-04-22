@@ -2,7 +2,7 @@
 #define PRINT_METHOD_H
 
 typedef enum {
-    BY_ROWS, BY_COLUMNS, ONE_DIMENSIONAL_ARRAY
+    DEFAULT, BY_ROWS, BY_COLUMNS, ONE_DIMENSIONAL_ARRAY
 } PrintMethod;
 
 #endif

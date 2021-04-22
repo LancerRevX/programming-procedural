@@ -11,6 +11,7 @@ typedef struct DiagonalMatrix DiagonalMatrix;
 struct DiagonalMatrix {
     size_t size;
     int32_t** matrix;
+    PrintMethod print_method;
 };
 
 DiagonalMatrix create_diagonal_matrix(FILE* file);
