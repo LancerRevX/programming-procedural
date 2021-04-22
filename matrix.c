@@ -20,13 +20,13 @@ Matrix create_matrix(FILE* file) {
     return matrix;
 }
 
-void matrix_write(Matrix* matrix, FILE* file) {
+void matrix_write(Matrix* matrix, FILE* file, PrintMethod print_method) {
     switch (matrix->type) {
         case DIAGONAL:
-            diagonal_matrix_write(&matrix->diagonal_matrix, file);
+            diagonal_matrix_write(&matrix->diagonal_matrix, file, print_method);
             break;
         case SQUARE:
-            square_matrix_write(&matrix->square_matrix, file);
+            square_matrix_write(&matrix->square_matrix, file, print_method);
             break;
         case LOWER_TRIANGULAR:
             lower_triangular_matrix_write(&matrix->lower_triangular_matrix, file);

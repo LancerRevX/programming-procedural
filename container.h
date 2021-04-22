@@ -20,7 +20,7 @@ struct Container {
 
 void container_init(Container*);
 void container_read(Container*, FILE*);
-void container_write(Container*, FILE*);
+void container_write(Container*, FILE*, PrintMethod print_method);
 void container_clear(Container*);
 
 #endif
