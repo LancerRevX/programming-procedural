@@ -30,6 +30,15 @@ void matrix_write(Matrix* matrix, FILE* file) {
     }
 }
 
+int32_t matrix_get_sum(Matrix* matrix) {
+    switch (matrix->type) {
+        case DIAGONAL:
+            return diagonal_matrix_get_sum(&matrix->diagonal_matrix);
+        case SQUARE:
+            return square_matrix_get_sum(&matrix->square_matrix);
+    }
+}
+
 void matrix_clear(Matrix* matrix) {
     switch (matrix->type) {
         case DIAGONAL:
