@@ -13,6 +13,7 @@ typedef struct {
 LowerTriangularMatrix create_lower_triangular_matrix(FILE* file);
 
 void lower_triangular_matrix_write(LowerTriangularMatrix* matrix, FILE* file);
+int32_t lower_triangular_matrix_get_sum(LowerTriangularMatrix* matrix);
 void lower_triangular_matrix_clear(LowerTriangularMatrix* matrix);
 
 #endif

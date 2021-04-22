@@ -29,6 +29,16 @@ void lower_triangular_matrix_write(LowerTriangularMatrix* matrix, FILE* file) {
     }
 }
 
+int32_t lower_triangular_matrix_get_sum(LowerTriangularMatrix* matrix) {
+    int32_t result = 0;
+    for (int32_t i = 0; i < matrix->size; i++) {
+        for (int32_t j = 0; j < matrix->size; j++) {
+            result += matrix->matrix[i][j];
+        }
+    }
+    return result;
+}
+
 void lower_triangular_matrix_clear(LowerTriangularMatrix* matrix) {
     if (matrix->size) {
         for (int32_t i = 0; i < matrix->size; i++) {

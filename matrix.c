@@ -40,6 +40,8 @@ int32_t matrix_get_sum(Matrix* matrix) {
             return diagonal_matrix_get_sum(&matrix->diagonal_matrix);
         case SQUARE:
             return square_matrix_get_sum(&matrix->square_matrix);
+        case LOWER_TRIANGULAR:
+            return lower_triangular_matrix_get_sum(&matrix->lower_triangular_matrix);
     }
 }
 
