@@ -1,6 +1,10 @@
 #include "container.h"
 #include "matrix.h"
 
+bool compare(Matrix* left, Matrix* right) {
+    return matrix_get_sum(left) > matrix_get_sum(right);
+}
+
 void container_init(Container* container) {
     container->first = NULL;
     container->size = 0;
@@ -31,6 +35,20 @@ void container_read(Container* container, FILE* file) {
             node = new_node;
         }
         container->size += 1;
+    }
+}
+
+void container_sort(Container* container) {
+    for (size_t i = 0; i < container->size - 1; i++) {
+        Node* node = container->first;
+        for (size_t j = 0; j < container->size - i - 1; j++) {
+            if (compare(&node->matrix, &node->next->matrix)) {
+                Matrix tmp = node->matrix;
+                node->matrix = node->next->matrix;
+                node->next->matrix = tmp;
+            }
+            node = node->next;
+        }
     }
 }
 
