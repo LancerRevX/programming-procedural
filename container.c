@@ -3,6 +3,7 @@
 
 void container_init(Container* container) {
     container->first = NULL;
+    container->size = 0;
 }
 
 void container_read(Container* container, FILE* file) {

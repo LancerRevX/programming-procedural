@@ -14,6 +14,7 @@ struct Node {
 typedef struct Container Container;
 struct Container {
     Node* first;
+    size_t size;
 };
 
 void container_init(Container*);
