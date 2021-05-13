@@ -7,7 +7,7 @@ extern "C" {
     #include "lower_triangular_matrix.h"
 }
 
-using namespace std;
+#include "test_file.h"
 
 TEST(SquareMatrix, create) {
     FILE* square_matrix_file = fopen("./square_matrix.raw", "rb");
@@ -28,6 +28,44 @@ TEST(SquareMatrix, create) {
             {4, 5, 6},
             {7, 8, 9}
         })
+    );
+}
+
+TEST(SquareMatrix, write) {
+    FILE* square_matrix_file = fopen("./square_matrix.raw", "rb");
+    int32_t type; fread(&type, 1, sizeof(int32_t), square_matrix_file);
+    SquareMatrix matrix = create_square_matrix(square_matrix_file);
+    fclose(square_matrix_file);
+
+    open_test_file();
+    square_matrix_write(&matrix, test_file, PrintMethod::DEFAULT);
+    close_test_file();
+
+    EXPECT_EQ(
+        test_file_to_string(),
+        "Square matrix:\n"
+        "Print method: by rows\n"
+        "1 2 3 \n"
+        "4 5 6 \n"
+        "7 8 9 \n"
+    );
+}
+
+TEST(SquareMatrix, clear) {
+    FILE* square_matrix_file = fopen("./square_matrix.raw", "rb");
+    int32_t type; fread(&type, 1, sizeof(int32_t), square_matrix_file);
+    SquareMatrix matrix = create_square_matrix(square_matrix_file);
+    fclose(square_matrix_file);
+
+    square_matrix_clear(&matrix);
+    open_test_file();
+    square_matrix_write(&matrix, test_file, PrintMethod::DEFAULT);
+    close_test_file();
+
+    EXPECT_EQ(
+        test_file_to_string(),
+        "Square matrix:\n"
+        "Print method: by rows\n"
     );
 }
 

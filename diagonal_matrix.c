@@ -70,4 +70,6 @@ void diagonal_matrix_clear(DiagonalMatrix* matrix) {
         }
         free(matrix->matrix);
     }
+    matrix->size = 0;
+    matrix->matrix = NULL;
 }

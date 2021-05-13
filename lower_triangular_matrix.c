@@ -70,4 +70,6 @@ void lower_triangular_matrix_clear(LowerTriangularMatrix* matrix) {
         }
         free(matrix->matrix);
     }
+    matrix->size = 0;
+    matrix->matrix = NULL;
 }

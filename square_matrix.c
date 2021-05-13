@@ -66,4 +66,6 @@ void square_matrix_clear(SquareMatrix* matrix) {
         }
         free(matrix->matrix);
     }
+    matrix->size = 0;
+    matrix->matrix = NULL;
 }

@@ -7,7 +7,7 @@ extern "C" {
     #include "lower_triangular_matrix.h"
 }
 
-using namespace std;
+#include "test_file.h"
 
 TEST(DiagonalMatrix, create) {
     FILE* diagonal_matrix_file = fopen("./diagonal_matrix.raw", "rb");
@@ -28,6 +28,44 @@ TEST(DiagonalMatrix, create) {
             {0, 2, 0},
             {0, 0, 3}
         })
+    );
+}
+
+TEST(DiagonalMatrix, write) {
+    FILE* diagonal_matrix_file = fopen("./diagonal_matrix.raw", "rb");
+    int32_t type; fread(&type, 1, sizeof(int32_t), diagonal_matrix_file);
+    DiagonalMatrix matrix = create_diagonal_matrix(diagonal_matrix_file);
+    fclose(diagonal_matrix_file);
+
+    open_test_file();
+    diagonal_matrix_write(&matrix, test_file, PrintMethod::DEFAULT);
+    close_test_file();
+
+    EXPECT_EQ(
+        test_file_to_string(),
+        "Diagonal matrix:\n"
+        "Print method: by rows\n"
+        "1 0 0 \n"
+        "0 2 0 \n"
+        "0 0 3 \n"
+    );
+}
+
+TEST(DiagonalMatrix, clear) {
+    FILE* diagonal_matrix_file = fopen("./diagonal_matrix.raw", "rb");
+    int32_t type; fread(&type, 1, sizeof(int32_t), diagonal_matrix_file);
+    DiagonalMatrix matrix = create_diagonal_matrix(diagonal_matrix_file);
+    fclose(diagonal_matrix_file);
+
+    diagonal_matrix_clear(&matrix);
+    open_test_file();
+    diagonal_matrix_write(&matrix, test_file, PrintMethod::DEFAULT);
+    close_test_file();
+
+    EXPECT_EQ(
+        test_file_to_string(),
+        "Diagonal matrix:\n"
+        "Print method: by rows\n"
     );
 }
 
