@@ -44,6 +44,15 @@ int main(int argc, char** argv) {
     fprintf(output_file, "Filled container\n");
     container_write(&container, output_file, DEFAULT, false);
     fprintf(output_file, "Written container\n");
+
+    container_sort(&container);
+    fprintf(output_file, "Sorted container\n");
+    container_write(&container, output_file, DEFAULT, false);
+    fprintf(output_file, "Written container\n");
+
+    container_write(&container, output_file, DEFAULT, true);
+    fprintf(output_file, "Written container\n");
+
     container_clear(&container);
     fprintf(output_file, "Cleared container\n");
     container_write(&container, output_file, DEFAULT, false);
