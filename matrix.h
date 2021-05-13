@@ -11,12 +11,13 @@
 
 #include "print_method.h"
 
-typedef enum Type Type;
+
 enum Type {
     DIAGONAL = 2,
     SQUARE = 1,
     LOWER_TRIANGULAR = 3
 };
+typedef enum Type Type;
 
 typedef struct Matrix Matrix;
 struct Matrix {
