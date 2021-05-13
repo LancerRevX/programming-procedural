@@ -4,4 +4,4 @@ tests/*
 !tests/*.cpp
 !tests/*.hpp
 !tests/*.raw
-!tests/CMakeFiles.txt
+!tests/CMakeLists.txt
