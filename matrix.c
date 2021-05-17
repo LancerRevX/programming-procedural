@@ -6,6 +6,9 @@ Matrix create_matrix(FILE* file) {
     int32_t type;
     fread(&type, sizeof(type), 1, file);
     Matrix matrix = {.type = type};
+    if (feof(file)) {
+        return matrix;
+    }
     switch (type) {
         case DIAGONAL:
             matrix.diagonal_matrix = create_diagonal_matrix(file);
@@ -15,6 +18,9 @@ Matrix create_matrix(FILE* file) {
             break;
         case LOWER_TRIANGULAR:
             matrix.lower_triangular_matrix = create_lower_triangular_matrix(file);
+            break;
+        default:
+            fprintf(stderr, "Invalid matrix type: %d!", type);
             break;
     }
     return matrix;

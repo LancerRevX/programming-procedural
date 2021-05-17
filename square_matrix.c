@@ -3,6 +3,10 @@
 SquareMatrix create_square_matrix(FILE* file) {
     SquareMatrix matrix;
     fread(&matrix.size, sizeof(int32_t), 1, file);
+    if (matrix.size <= 0) {
+        fprintf(stderr, "Invalid square matrix size: %d!", matrix.size);
+        return matrix;
+    }
     matrix.matrix = malloc(sizeof(int32_t*) * matrix.size);
     for (int32_t i = 0; i < matrix.size; i++) {
         matrix.matrix[i] = malloc(sizeof(int32_t) * matrix.size);
