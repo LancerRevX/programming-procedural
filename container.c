@@ -67,6 +67,25 @@ void container_write(Container* container, FILE* file, PrintMethod print_method,
     }
 }
 
+void container_multimethod(Container* container, FILE* file) {
+    Node* left = container->first;
+    if (!left) {
+        fprintf(file, "The container is empty!\n");
+    } else {
+        fprintf(file, "The container's multimethod:\n");
+        while (left) {
+            Node* right = left->next;
+            while (right) {
+                matrix_multimethod(&left->matrix, &right->matrix, file);
+                matrix_write(&left->matrix, file);
+                matrix_write(&right->matrix, file);
+                right = right->next;
+            }
+            left = left->next;
+        }
+    }
+}
+
 void container_clear(Container* container) {
     Node* node = container->first;
     while (node)

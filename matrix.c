@@ -45,6 +45,34 @@ int32_t matrix_get_sum(Matrix* matrix) {
     }
 }
 
+void matrix_multimethod(Matrix* left, Matrix* right, FILE* file) {
+    switch (left->type)
+    {
+        case SQUARE:
+            switch (right->type)
+            {
+                case SQUARE:
+                    fprintf(file, "Two square matrices\n");
+                    break;
+                case DIAGONAL:
+                    fprintf(file, "Square matrix and diagonal matrix\n");
+                    break;
+            }
+            break;
+
+        case DIAGONAL:
+            switch (right->type)
+            {
+                case SQUARE:
+                    fprintf(file, "Diagonal matrix and square matrix\n");
+                    break;
+                case DIAGONAL:
+                    fprintf(file, "Two diagonal matrices\n");
+                    break;
+            }
+    }
+}
+
 void matrix_clear(Matrix* matrix) {
     switch (matrix->type) {
         case DIAGONAL:

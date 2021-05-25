@@ -22,6 +22,7 @@ void container_init(Container*);
 void container_read(Container*, FILE*);
 void container_write(Container*, FILE*, PrintMethod print_method, bool);
 void container_sort(Container*);
+void container_multimethod(Container*, FILE*);
 void container_clear(Container*);
 
 #endif
