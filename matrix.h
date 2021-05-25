@@ -27,6 +27,7 @@ struct Matrix {
 Matrix create_matrix(FILE* file);
 
 void matrix_write(Matrix* matrix, FILE* file);
+void matrix_multimethod(Matrix* left, Matrix* right, FILE* file);
 void matrix_clear(Matrix* matrix);
 
 #endif
